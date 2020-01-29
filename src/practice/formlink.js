@@ -37,7 +37,7 @@ export default class Commentlist extends React.Component {
                                     Adduser
                                </Link>
                             </li>
-                            <Getlocal />
+                             <Getlocal /> 
 
                         </ul>
                         <ul></ul>

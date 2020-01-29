@@ -37,8 +37,8 @@ class form extends React.Component {
     };
 
     submit() {
-        localStorage.setItem('formsData', JSON.stringify(this.state));
-
+        localStorage.setItem('formsData', JSON.stringify([{...this.state}]));
+    
     }
     
     render() {
