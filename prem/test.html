@@ -1,0 +1,34 @@
+var name = document.getElementById('employeeName').value;
+        var dob = document.getElementById('dob').value;
+        var age = document.getElementById('employeeAge').value;
+
+        var skills = document.getElementById('skill');
+        document.getElementById('tablename').innerHTML = name;
+        document.getElementById('tabledob').innerHTML = dob;
+        document.getElementById('tableage').innerHTML = age;
+        var sex = document.getElementsByClassName('gen');
+        var t_sex;
+        if (document.getElementById('gen1').checked) {
+            t_sex = document.getElementById('gen1').value;
+        } else if (document.getElementById('gen2').checked) {
+            t_sex = document.getElementById('gen2').value;
+        } else if (document.getElementById('gen3').checked) {
+            t_sex = document.getElementById('gen3').value;
+        }
+        document.getElementById('tablesex').innerHTML = t_sex;
+
+
+
+
+        var table = document.getElementById("results");
+        var row = table.insertRow(-1);
+        var tname = row.insertCell(0);
+        var tdob = row.insertCell(1);
+        var tage = row.insertCell(2);
+        var tsex = row.insertCell(3);
+        var tskills = row.insertCell(4);
+        tname.innerHTML = name;
+        tdob.innerHTML = dob;
+        tage.innerHTML = age;
+        tsex.innerHTML = sex;
+        tskills.innerHTML = skills;

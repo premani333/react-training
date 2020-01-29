@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Employee Form</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <form name="forms" onsubmit="return employeeform()" method="GET" id="myForm">
+        <div class="container">
+            <h1><b>Employee Form</b></h1>
+            <div class="bodytext">
+                <div class="row">
+                    <p class="col-md-2 control-label"><b>Name:</b>
+                        <div class="col-md-5"><input type="text" class="form-control" onblur="nameblur()"
+                                placeholder="person Name" name="employeeName" id="employeeName"> </div>
+                    </p><br><br>
+                    <span id="name" style="color: red;"> </span>
+                </div>
+                <div class="row">
+                    <p class="col-md-2 control-label"><b> DOB :</b>
+                        <div class="col-sm-5">
+                            <input type="date" onblur="birthdate()" class="form-control" name="dob" id="dob">
+                        </div>
+                    </p><br><br>
+                    <span id="birthdate" style="color: red;"></span>
+                </div>
+                <div class="row">
+                    <p class="col-md-2 control-label"><b> Age :</b>
+                        <div class="col-md-5"> <input type="number" onblur="age()" class="form-control"
+                                placeholder="Age" name="employeeAge" id="employeeAge"></div>
+                        <div class="col-md-1">
+                            <input type="button" value="find age" id="find age" class="btn btn-primary"
+                                onclick="AgeValidation()"></input></div>
+                    </p>
+                    <span id="age" style="color: red;"></span><br>
+                </div>
+                <div class="row"></div>
+                <p id="gender">
+                    <div class="col-md-2 control-label"><b>sex :</b>
+                    </div>
+                    <div class="col-md-1">
+                        <input type="radio" id="gen1" name="gender" value="male" class="radio-inline">male
+                    </div>
+                    <div class="col-md-1">
+                        <input type="radio" id="gen2" name="gender" value="female" class="radio-inline"> female
+                    </div>
+                    <div class="col-md-1">
+                        <input type="radio" id="gen3" name="gender" value="other" class="radio-inline"> other
+                    </div>
+                </p><br>
+                <span id="sex" style="color: red;"></span><br>
+
+                <p id="skills">
+                    <div class="col-md-2 control-label"><b>Skills:</b></div>
+                    <div class="col-md-1">
+                        <input type="checkbox" class="checkbox-inline" name="skills" value="Java">JAVA
+                    </div>
+                    <div class="col-md-1">
+                        <input type="checkbox" class="checkbox-inline" name="skills" value="HTML"> HTML
+                    </div>
+                    <div class="col-md-1">
+                        <input type="checkbox" class="checkbox-inline" name="skills" value="CSS">CSS
+                    </div>
+                </p>
+                <p id="Skills" style="color: red;"></p><br><br><br>
+                <div class="row">
+                    <label for="commant" class="col-md-2 control-label"><b></b>company feedback :</label>
+                    <div class="feedback">
+                        <textarea id="feedback" class="form-control" name="feedback" placeholder="write somthing.."
+                            rows="3" max-rows="6"></textarea><br><br>
+                    </div>
+                </div>
+                <div class="mysubmit">
+                    <button id="mysubmit" type="button" onclick="submitbutton()" class="btn btn-success" value="submit">
+                        Submit</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </form>
+    <div class="table table-hover" id="tableArea"></div>
+
+</body>
+<script>
+    //debugger;
+    function AgeValidation() {
+        var date1 = new Date();
+        var dob = document.getElementById('dob').value;
+        var date2 = new Date(dob);
+        var pattern = /^\{4}$\/\d{1,2}\/\m{1,2}/;
+        var y1 = date1.getFullYear();
+        var y2 = date2.getFullYear();
+        var age = y1 - y2;
+        // console.log(document.getElementById('employeeAge'))
+        if (age) {
+
+            document.getElementById('employeeAge').value = age;
+
+        }// else {
+        // alert('please input your DOB...');
+        // }
+    }
+    // form validation 
+    // variable declaration
+    function employeeform() {
+        var employeeName = document.getElementById('employeeName').value;
+        var employeeAge = document.getElementById('employeeAge').value;
+        var dob = document.getElementById('dob').value;
+    }
+    //debugger;
+    function nameblur() {
+        var employeeName = document.getElementById("employeeName").value;
+        if (employeeName == "") {
+            document.getElementById('name').innerHTML = "enter the name first";
+        }
+        else {
+            document.getElementById('name').innerHTML = "";
+        }
+    }
+    function age() {
+        var employeeage = document.getElementById("employeeAge").value;
+        if (employeeage == "" || employeeage == 0) {
+            document.getElementById('age').innerHTML = "mention your age";
+
+        }
+        else {
+            document.getElementById('age').innerHTML = "";
+        }
+    }
+    function birthdate() {
+        var dob = document.getElementById("dob").value;
+
+        if (dob == 0 || dob == null) {
+
+            document.getElementById('birthdate').innerHTML = "selext your birth date";
+        }
+        else {
+            document.getElementById('birthdate').innerHTML = "";
+        }
+    }
+    // submit button function
+    function submitbutton() {
+        var name = document.getElementById('employeeName').value;
+        var age = document.getElementById('employeeAge').value;
+        var dob = document.getElementById('dob').value;
+        // var gender = document.getElementsByClassName('gen');
+        var gen = '';
+        var gender = document.getElementsByName('gender');
+        for (i = 0; i < gender.length; i++) {
+            if (gender[i].checked)
+                gen = gender[i].value;
+        }
+        var skills = [];
+        var employeeskills = document.getElementsByName('skills');
+        for (var i = 0, n = employeeskills.length; i < n; i++) {
+            if (employeeskills[i].checked) {
+                skills += ',' + employeeskills[i].value;
+            }
+        }
+        if (skills) skills = skills.substring(1);
+        // var skills = document.getElementsByClassName('skill');
+        // var table = document.getElementById('tabledata');
+
+        if (name == "") {
+            alert('enter the name first');
+        }
+        if (age == "" || age == 0) {
+            alert('mention your age');
+        }
+        if (dob == 0 || dob == null) {
+            alert('select your date of birth');
+        }// using class to validate the radio button
+        if ((gender[0].checked == false) && (gender[1].checked == false) && (gender[2].checked == false)) {
+            alert('select your gender');
+        }
+        if ((employeeskills[0].checked == false) && (employeeskills[1].checked == false) && (employeeskills[2].checked == false)) {
+            alert('please select anyone of your skills');
+        }
+        var user = {
+            name: name, dob: dob, age: age, gen: gen, skills: skills
+        }
+        //console.log(user);
+        var employees = JSON.parse(localStorage.getItem('employeesdata'));
+        //  console.log(JSON.parse(localStorage.getItem('employees')));
+
+        if (employees && employees.length) {
+            employees.push(user);
+        } else {
+            employees = [user];
+        }
+        localStorage.setItem('employeesdata', JSON.stringify(employees));
+        //console.log(localStorage.setItem('employees', JSON.stringify(employees)));
+
+        window.location.reload();
+    }
+    listItems();
+    function listItems() {
+        var text = `<table id="results" class="table">
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Skills</th>
+                <th>Restore</th>
+            </tr>`;
+        var employees = JSON.parse(localStorage.getItem("employeesdata"));
+        //console.log(employees);
+        for (var i = 0; i < employees.length; i++) {
+            text += `<tr><td>` + employees[i]["name"] +
+                `</td><td>` + employees[i]["dob"] +
+                '</td><td>' + employees[i]["age"] +
+                '</td><td>' + employees[i]["gen"] +
+                '</td><td>' + employees[i]["skills"] +
+                '</td><td><input type="button" value="Edit" onclick="edit()"</td>';
+        }
+        document.getElementById("tableArea").innerHTML = text;
+    }
+    function edit() {
+
+    }
+</script>
+
+</html>

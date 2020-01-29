@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p> Type anyone of below </p>
+    <ul>
+        <li>car</li>
+        <li>bus</li>
+        <li>train</li>
+    </ul>
+    <p> Type:
+        <input type="text" id="inputs">
+    </p>
+    <button type="button" onclick="submit()" id="submit">submit</button><br>
+    <span id="display"></span>
+</body>
+<script>
+    debugger;
+    function submit() {
+        var names = document.getElementById("inputs").value;
+        var text;
+        switch (names) {
+            case "car":
+                text = "you typed a car";
+                break;
+            case "bus":
+                text = "you typed a bus";
+                break;
+            case "train":
+                text = "you typed a train"
+                break;
+                text = "type a given one...!";
+        }
+        document.getElementById('display').innerHTML = text;
+    }
+    console.log(submit());
+
+</script>
+
+</html>

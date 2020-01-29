@@ -1,0 +1,37 @@
+
+body{
+
+    padding: 50px;
+    height: 500px;
+    width: 500pxs;
+    border-radius: 3px;
+    background-color: ghostwhite;
+    text-align: left;
+    margin: 0;
+    background-image: url('https://image.shutterstock.com/image-photo/human-resources-crm-data-mining-260nw-366555809.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+
+    
+} 
+
+.container{
+    text-align:center;
+    padding-top: 20px;
+    color: whitesmoke;
+    border-radius: 5px;
+    
+   
+}
+.mysubmit{
+    text-align: center;
+    background-size: 30px;
+}
+.feedback{
+    padding-left: 150px;
+    padding-right: 80px;
+}
+.bodytext{
+    padding-left: 570px;
+}

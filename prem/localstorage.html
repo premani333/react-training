@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST">
+        <p>name:
+            <input type="text" id="name">
+            <button type="button" onclick="save()">Add</button>
+        </p>
+        <span id="display"></span>
+
+
+    </form>
+</body>
+
+<script>
+    var names = [];
+    function save() {
+        //variable declare
+        var enteredName = document.getElementById('name').value;
+        //assign string value to localstorage
+        names.push(enteredName)
+        localStorage.setItem("name", JSON.stringify(names));
+        var namesFromLs = JSON.parse(localStorage.getItem("name"));
+        //loop statement 
+        var values = '';
+        for (var i = 0; i < namesFromLs.length; i++) {
+            values += '<p>' + namesFromLs[i] + '</p>';
+        }
+        document.getElementById('display').innerHTML = values;
+        //remove item to local storage
+        localStorage.removeItem('name');
+        // localStorage.clear('name');
+
+    }
+</script>
+
+</html>

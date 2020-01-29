@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST">
+        <p> Name;
+            <input type="text" id="name">
+            <button type="button" onclick="add()" value="submit">setcookie</button>
+        </p>
+        <span id="display"></span>
+    </form>
+</body>
+<script>
+    // debugger;
+    function add() {
+        var name = document.getElementById("name").value;
+        console.log(name);
+        // set cookie
+        var c_name = document.cookie = name;
+        document.getElementById("display").innerHTML = c_name;
+    }
+    //console.log(add());
+
+</script>
+
+</html>
