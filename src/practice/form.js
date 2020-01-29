@@ -2,7 +2,7 @@ import React from 'react';
 //import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
-
+//import Getlocal from './getlocal';
 
 
 
@@ -40,16 +40,12 @@ class form extends React.Component {
         localStorage.setItem('formsData', JSON.stringify(this.state));
 
     }
-
-
-
-
+    
     render() {
         return (
             <div  >
                 <Form>
-                    <h3>Form</h3>
-                    <form ref="form" onSubmit={this.handleSubmit}>
+                    
                         <FormGroup >
                             <Label sm={14}>
                                 <b>Name</b>
@@ -138,8 +134,9 @@ class form extends React.Component {
                         </p>
 
                         <button type="submit" onClick={this.submit} className="btn btn-primary">Submit</button>
-                    </form>
+                  
                 </Form>
+                {/* <Getlocal/> */}
             </div >
         );
     }

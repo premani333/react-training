@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Form from './form';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'reactstrap';
+import Getlocal from './getlocal';
 
 
 
@@ -32,11 +32,12 @@ export default class Commentlist extends React.Component {
                                 <Link to='/' className="btn btn-light">Home</Link>
                             </li>
                             <br />
-                            <li> <Container className="themed-container">
-                                <Link to='/adduser' class="btn btn-success "  >
+                            <li>
+                                <Link to='/adduser' className="btn btn-success "  >
                                     Adduser
-                               </Link> </Container>
+                               </Link>
                             </li>
+                            <Getlocal />
 
                         </ul>
                         <ul></ul>
@@ -58,7 +59,6 @@ export default class Commentlist extends React.Component {
         );
     }
 }
-
 
 
 function Adduser() {
