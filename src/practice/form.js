@@ -37,15 +37,22 @@ class form extends React.Component {
     };
 
     submit() {
-        localStorage.setItem('formsData', JSON.stringify([{...this.state}]));
-    
+        
+    let setvalue= JSON.parse(localStorage.getItem('formsData'));
+   
+     if (setvalue && setvalue.length){
+         setvalue.push(this.state);
+     }else{
+         setvalue=[this.state]
+     }
+     localStorage.setItem('formsData', JSON.stringify(setvalue));
     }
-    
+
+
     render() {
         return (
             <div  >
-                <Form>
-                    
+                    <Form>
                         <FormGroup >
                             <Label sm={14}>
                                 <b>Name</b>
@@ -87,11 +94,10 @@ class form extends React.Component {
                     <label className="radio">
                                 
                                     <input type="radio"
-                                        name="sex"
-
-                                        value="male"
-                                        checked={this.state.sex === "male"}
-                                        onChange={e => this.handlechange(e)} />male
+                                     name="sex"
+                                     value="male"
+                                     checked={this.state.sex === "male"}
+                                     onChange={e => this.handlechange(e)} />male
                                     
                             </label>
                             <label>

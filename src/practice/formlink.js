@@ -22,6 +22,14 @@ export default class Commentlist extends React.Component {
 
     };
 
+    onEdit = (i) => () =>{
+        
+    const data = JSON.parse(localStorage.getItem('formsData'));
+    console.log({i, data, dddddddddddddddddd: data[i]});
+    
+    this.setState({fields: data[i]})
+    }
+    
     render() {
         return (
             <Router>
@@ -36,28 +44,25 @@ export default class Commentlist extends React.Component {
                                 <Link to='/adduser' className="btn btn-success "  >
                                     Adduser
                                </Link>
-                            </li>
-                             <Getlocal /> 
-
+                            </li>                          
                         </ul>
                         <ul></ul>
                     </nav>
                     <Switch>
                         <Route path="/adduser">
-
                             <Adduser />
-
                         </Route>
                         <Route path='/'>
                             <Home />
                         </Route>
-
                     </Switch>
-
+                     <Getlocal onEdit={this.onEdit} onDelete={()=>()=>{}} />
                 </div>
             </Router>
         );
+       
     }
+     
 }
 
 
