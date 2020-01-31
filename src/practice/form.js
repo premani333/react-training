@@ -7,28 +7,35 @@ import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 class form extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        let data = JSON.parse(localStorage.getItem('formsData'));
         this.submit = this.submit.bind(this);
+                //create a state 
         this.state = {
             name: "",
             dob: "",
             email: "",
             sex: "",
-            skills: ""
-
+            skills: "",
+            index:0,
+            data:data            
         }
+        this.handleShow = this.handleShow.bind(this)
     }
-    change = e => {
+    //event change function 
+    change = e => { 
         this.setState({
             [e.target.name]: e.target.value
         });
     };
+    //checkbox checking 
     handleCheckboxChange(e) {
         this.setState({
             skills: e.target.value
         });
     };
+    //radio button checked function
     handlechange(e) {
         this.setState({
             sex: e.target.value,
@@ -37,7 +44,7 @@ class form extends React.Component {
     };
 
     submit() {
-        
+       //get the value from localstorage 
     let setvalue= JSON.parse(localStorage.getItem('formsData'));
    
      if (setvalue && setvalue.length){
@@ -47,7 +54,14 @@ class form extends React.Component {
      }
      localStorage.setItem('formsData', JSON.stringify(setvalue));
     }
-
+    // onEdit = (i) => () =>{
+        
+    //     const data = JSON.parse(localStorage.getItem('formsData'));
+    //     console.log({i, data, editvalue: data[i]});
+        
+    //     this.setState({fields: data[i]})
+       
+    //     }
 
     render() {
         return (
@@ -148,4 +162,4 @@ class form extends React.Component {
     }
 }
 
-export default form;
+export default  form;

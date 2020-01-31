@@ -4,6 +4,7 @@ import {Table} from 'react-bootstrap';
 
 
 export default function({onEdit, onDelete}){
+  
     const data = JSON.parse(localStorage.getItem('formsData'));
    
     if(data && !data.length) return null;
@@ -23,14 +24,14 @@ export default function({onEdit, onDelete}){
         <th>Skills</th>
         <th>option</th>
 </tr></thead>
-{data && data.map((p, index) =>  
+{data && data.map((persondetails, index) =>  
 <tbody>
 <tr>
-    <td>{p.name}</td>
-    <td>{p.dob}</td>
-    <td>{p.email}</td>
-    <td>{p.sex}</td>
-    <td>{p.skills}</td>
+    <td>{persondetails.name}</td>
+    <td>{persondetails.dob}</td>
+    <td>{persondetails.email}</td>
+    <td>{persondetails.sex}</td>
+    <td>{persondetails.skills}</td>
     <td>
       <button type="button" className="btn btn-info" onClick={onEdit(index)} >edit</button>
       <button type="button" className="btn btn-danger" onDelete={onDelete(index)}>delete</button> 
@@ -44,7 +45,3 @@ export default function({onEdit, onDelete}){
     )
 
 } 
-function edit(){
-  
-
-}

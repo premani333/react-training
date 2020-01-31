@@ -21,15 +21,30 @@ export default class Commentlist extends React.Component {
         console.log(fields);
 
     };
-
+    
+    handleShow(){
+        this.setState({show: true});
+    }
     onEdit = (i) => () =>{
-        
-    const data = JSON.parse(localStorage.getItem('formsData'));
-    console.log({i, data, dddddddddddddddddd: data[i]});
+    let data = JSON.parse(localStorage.getItem('formsData'));
+     console.log({i, data, data: data[i]});
     
     this.setState({fields: data[i]})
+    data=data.map((value)=>{
+       value.name===this.props.name,
+       value.dob===this.props.dob,
+       value.email===this.props.email,
+       value.sex===this.props.sex,
+       value.skills===this.props.skills
+       return value;
+       
+   })
+   localStorage.setItem('formsData', JSON.stringify(data));
+   //this.props.updateList(data);
+   
     }
-    
+
+
     render() {
         return (
             <Router>
@@ -57,6 +72,7 @@ export default class Commentlist extends React.Component {
                         </Route>
                     </Switch>
                      <Getlocal onEdit={this.onEdit} onDelete={()=>()=>{}} />
+                     
                 </div>
             </Router>
         );
@@ -69,7 +85,7 @@ export default class Commentlist extends React.Component {
 function Adduser() {
     return <div>
 
-        <Form onSubmit={fields => this.onSubmit(fields)} />
+        <Form onSubmit={fields => this.onSubmit(fields)}  />
     </div>
 }
 function Home() {
