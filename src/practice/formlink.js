@@ -22,27 +22,28 @@ export default class Commentlist extends React.Component {
 
     };
     
-    handleShow(){
-        this.setState({show: true});
-    }
-    onEdit = (i) => () =>{
+       
+        onEdit = (i) => () =>{
     let data = JSON.parse(localStorage.getItem('formsData'));
      console.log({i, data, data: data[i]});
     
-    this.setState({fields: data[i]})
-    data=data.map((value)=>{
-       value.name===this.props.name,
-       value.dob===this.props.dob,
-       value.email===this.props.email,
-       value.sex===this.props.sex,
-       value.skills===this.props.skills
-       return value;
-       
-   })
-   localStorage.setItem('formsData', JSON.stringify(data));
-   //this.props.updateList(data);
-   
+     this.setState({fields: data[i]})
+     data = data.map((value)=>{
+     return{
+         ...value,
+         name:this.state.name,
+         dob:this.state.dob,
+         email:this.state.email,
+         sex:this.state.sex,
+         skills:this.state.skills
+     }
+     })
+        
     }
+    onDelete(){
+
+          
+        }
 
 
     render() {
@@ -71,7 +72,7 @@ export default class Commentlist extends React.Component {
                             <Home />
                         </Route>
                     </Switch>
-                     <Getlocal onEdit={this.onEdit} onDelete={()=>()=>{}} />
+                     <Getlocal onEdit={this.onEdit} onDelete={this.onDelete} />
                      
                 </div>
             </Router>

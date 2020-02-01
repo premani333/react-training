@@ -51,3 +51,11 @@ function Two() {
 function Three() {
     return <h1>3</h1>
 } 
+let setvalue= JSON.parse(localStorage.getItem('formsData'));
+   
+        if (setvalue && setvalue.length){
+            setvalue.push(this.state);
+        }else{
+            setvalue=[this.state]
+        }
+        localStorage.setItem('formsData', JSON.stringify(setvalue));
